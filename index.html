@@ -2,20 +2,43 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-
     <title>Do I Need A Coat?</title>
     <meta name="description" content="Weather app that looks out for you">
     <meta name="author" content="Abdul, Defne, Chris">
-
-    <link rel="stylesheet" href="/Users/defne/Development/code/Mod1/Phase-1-Project-Repo/style.css">
+    <link
+      href="https://fonts.googleapis.com/css?family=Great+Vibes|Open+Sans:400,600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script defer type="text/javascript" src="index.js"></script>
   </head>
-
   <body>
-    <!-- <div> for Mocha to display test results. -->
-    <div id="mocha"></div>
+    <header>
+      <h1>Do I Need A Coat?</h1>
+      <nav class='search-bar'>search bar here</nav>
+    </header>
 
-    <!-- Include the student's JavaScript file. -->
-    <script src="index.js"></script>
+    <main>
+        <!--weather-display-->
+      <div id="weather">
+        <h2 id="city-name"></h2>
+        <img id="detail-image" src="http://placehold.it/"/>
+        <h3 id="weather-report">Insert Weather Here</h3>
+        <p>Insert clothing recommendations here</p>
+        <!--comments-->
+        <h3 id="comments">What are people wearing in [city]:</h3>
+        <ul id="comments-list">
+          <li>Replace with actual comments</li>
+          <li>From the server</li>
+        </ul>        
+        <!--add-comments-->
+        <form id="new-comment">
+          <label for="new-comment" id="are-you-here">Are you in [this city]? Is it cold?</label>
+          <textarea id="comment-input"></textarea>
+          <button type="submit">Add comment</button>
+        </form>
+      </div>
+    </main>
   </body>
 </html>
 
