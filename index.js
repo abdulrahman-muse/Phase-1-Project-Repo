@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // ## Deliverables
 //DONE: 1. SEE IMAGE
 //      2. SEE IMAGE TITLE
@@ -62,4 +63,8 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
     })
+=======
+h1
+>>>>>>> 99676509a079801b4732d9c4d224acf7a8f69e69
 
+dhbius
