@@ -6,7 +6,11 @@
     <meta name="description" content="Weather app that looks out for you">
     <meta name="author" content="Abdul, Defne, Chris">
     <link
+<<<<<<< Updated upstream
+      href="https://fonts.googleapis.com/css?family=Sofia"
+=======
       href="https://fonts.googleapis.com/css?family=Great+Vibes|Open+Sans:400,600&display=swap"
+>>>>>>> Stashed changes
       rel="stylesheet"
     />
     <link rel="stylesheet" type="text/css" href="style.css">
@@ -15,6 +19,38 @@
   <body>
     <header>
       <h1>Do I Need A Coat?</h1>
+<<<<<<< Updated upstream
+    </header>
+
+    <main>
+      <div class="search">
+        <input id="searchbar" type="text" class="search" placeholder="Search city...">
+        <button type="submit" class="search">Go</button>
+      </div>  
+      <!--weather-display-->
+      <div id="weather">
+        <h2 id="city-name">City Name</h2>
+        <img id="weather-image" src="https://i.guim.co.uk/img/media/8132db117e863456488b553125383608d8c13264/0_265_2366_1419/master/2366.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=a646aa6afdee6cbea9460b4a660743ab" width="400" height="400"/>
+        <h3 id="weather-report">Insert Weather Here</h3>
+        <p id="what-to-wear">Insert clothing recommendations here</p>
+      </div>
+        <!--comments-->
+        <div id="comments">
+          <h3 id="comments-header">What are people wearing in [city]:</h3>
+          <ul id="comments-list">
+            <li>Replace with actual comments</li>
+            <li>From the server</li>
+          </ul>
+        </div>        
+        <!--add-comments-->
+        <div class="new-comments-container">
+          <form id="new-comment">
+            <label for="new-comment" id="are-you-here">Are you in [this city]? Is it cold?</label>
+            <textarea id="comment-input"></textarea>
+            <button type="submit">Add comment</button>
+          </form>
+        </div>
+=======
       <nav class='search-bar'>search bar here</nav>
     </header>
 
@@ -22,19 +58,11 @@
         <!--weather-display-->
       <div id="weather">
         <h2 id="city-name"></h2>
- 
         <img id="weather-image" src="http://placehold.it/"/>
         <h3 id="weather-report">Insert Weather Here</h3>
         <p id="what-to-wear">Insert clothing recommendations here</p>
         <!--comments-->
         <h3 id="comments-header">What are people wearing in [city]:</h3>
-
-        <img id="detail-image" src="http://placehold.it/"/>
-        <h3 id="weather-report">Insert Weather Here</h3>
-        <p>Insert clothing recommendations here</p>
-        <!--comments-->
-        <h3 id="comments">What are people wearing in [city]:</h3>
-
         <ul id="comments-list">
           <li>Replace with actual comments</li>
           <li>From the server</li>
@@ -46,6 +74,7 @@
           <button type="submit">Add comment</button>
         </form>
       </div>
+>>>>>>> Stashed changes
     </main>
   </body>
 </html>
