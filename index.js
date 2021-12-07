@@ -1,16 +1,13 @@
 // ## Deliverables
-//DONE: 1. SEE IMAGE
-//      2. SEE IMAGE TITLE
-//      3. SEE ALL COMMENTS
+// 1. SEE TITLE/SEARCH BAR UPON LOADING THE PAGE
+//      2. SEARCH LOCATION
+//      3. SHOW WEATHER INFO, RECS & COMMENTS
 //      4. ADD NEW COMMENT WHEN COMMENT FORM IS SUBMITTED
-//      5. CLICK ON HEART ICON INCREASES IMAGE LIKES
-
-// ## Bonus:
-//DONE:   1. REMOVE COMMENT WHEN CLICKED
-//        2. CLICK THE IMAGE TO GET RANDOM DOG IMAGE
 
 document.addEventListener('DOMContentLoaded', () => {
-    const imgUrl = "http://localhost:3000/images/1"
+    const API = "https://open-meteo.com/en"
+    const locationResult = `https://www.metaweather.com/api/location/${woeid}`
+    const searchBar = document.querySelector('#searchbar')
     const cityName = document.querySelector('h2#city-name')
     const weatherImage = document.querySelector('img#weather-image')
     const weatherReport = document.querySelector('h3#weather-report')
@@ -21,26 +18,45 @@ document.addEventListener('DOMContentLoaded', () => {
     const commentLabel = document.querySelector('#are-you-here')
     const commentInput = document.querySelector('#comment-input')
 
-    fetch(imgUrl)
+    fetch(API)
     .then(resp => resp.json())
-    .then(data => {
-        cityName.textContent = data.title
-        weatherImage.src = data.image
-        cardImage.addEventListener('click', (e) => {
-            fetch("https://dog.ceo/api/breeds/image/random")
-            .then(res => res.json())
-            .then(info => cardImage.src = info.message)
-        })
+    .then(console.log('hi!'))
+    //.then(data => {
+    //    cityName.textContent = data.title
+    //    weatherImage.src = data.image
+
+    const places = [
+        {name: "New York",
+        woeid: 2459115},
+        {name: "Los Angeles",
+        woeid: 2442047},
+        {name: "Toronto",
+        woeid: 4118}
+    ]
+
+   searchBar.addEventListener('input', (e) => {
+        let value = e.target.value
+        if (value && value.trim().length > 0) {
+            value = value.trim().toLowerCase();
+            renderWeather(places.filter(place => {
+                return place.name.includes(value)
+            }))
+        }
+    })
+
+    function renderWeather(locations) {
+        for (const item of locations) {
+            cityName.textContent = item.name
+        }
+    }
+
+
         commentsList.innerHTML = ' '
         data.comments.forEach(comment => {
         const li = document.createElement('li')
         li.innerText = comment.content
         commentsList.appendChild(li)
-        li.addEventListener('click', (ev) => {
-            ev.target.remove()
         })
-    })
-    })
 
     commentForm.addEventListener('submit', addComment)
     
@@ -49,16 +65,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const li = document.createElement('li')
         li.textContent = commentInput.value
         commentsList.appendChild(li)
-        li.addEventListener('click', (ev) => {
-            ev.target.remove()
-        })
         e.target.reset()
     }
 
-    likesSection.addEventListener('click', function(){
-        const likeNumbers = likeCount.textContent.replace("likes", "");
-        const likez = parseInt(likeNumbers, 10);
-        likeCount.textContent = `${likez + 1} likes`;
-    })
+    
 
 })
