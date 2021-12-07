@@ -1,14 +1,44 @@
 // ## Deliverables
 // 1. SEE TITLE/SEARCH BAR UPON LOADING THE PAGE
-//      2. SEARCH LOCATION
-//      3. SHOW WEATHER INFO, RECS & COMMENTS
-//      4. ADD NEW COMMENT WHEN COMMENT FORM IS SUBMITTED
+// 2. SEARCH LOCATION
+// 3. SHOW WEATHER INFO, RECS & COMMENTS
+// 4. ADD NEW COMMENT WHEN COMMENT FORM IS SUBMITTED
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function(){
+    fetchCities();
+})
+
+const cities = "http://localhost:3000/locations"
+const cityName = document.querySelector('h2#city-name')
+const searchBar = document.querySelector('#searchbar')
+const searchButton = document.querySelector('#search-button')
+
+function fetchCities(){
+    fetch (cities)
+    .then(resp => resp.json())
+    .then(console.log('hi!'));
+    }
+
+searchButton.addEventListener('click', (e) => {
+    let search = searchBar.value
+    if (search.length > 0) {
+        getResults(cities, search)
+                }
+            })
+
+function getResults(array, string) {
+    if(typeof string === 'string') {
+        let lowerString = string.toLowerCase()
+        for (let x of array) {
+            if (x.name.toLowerCase().find(lowerString)) {
+                console.log(x)
+            }
+        }    
+    }
+        }
+
     const API = "https://open-meteo.com/en"
-    const locationResult = `https://www.metaweather.com/api/location/${woeid}`
-    const searchBar = document.querySelector('#searchbar')
-    const cityName = document.querySelector('h2#city-name')
+    const locationResult = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&daily=weathercode&current_weather=true&timezone=America%2FNew_York`
     const weatherImage = document.querySelector('img#weather-image')
     const weatherReport = document.querySelector('h3#weather-report')
     const whatToWear = document.querySelector('p#what-to-wear')
@@ -21,34 +51,27 @@ document.addEventListener('DOMContentLoaded', () => {
     fetch(API)
     .then(resp => resp.json())
     .then(console.log('hi!'))
-    //.then(data => {
-    //    cityName.textContent = data.title
-    //    weatherImage.src = data.image
 
-    const places = [
-        {name: "New York",
-        woeid: 2459115},
-        {name: "Los Angeles",
-        woeid: 2442047},
-        {name: "Toronto",
-        woeid: 4118}
-    ]
 
-   searchBar.addEventListener('input', (e) => {
-        let value = e.target.value
-        if (value && value.trim().length > 0) {
-            value = value.trim().toLowerCase();
-            renderWeather(places.filter(place => {
-                return place.name.includes(value)
-            }))
-        }
-    })
 
-    function renderWeather(locations) {
-        for (const item of locations) {
-            cityName.textContent = item.name
-        }
-    }
+// 1. receive the name of the city
+function isMatch (element) {
+    return element.name === searchBar.value
+}
+// 2. search through cities.json to locate matching city
+function matchSearch() {
+    let result = cities.find(isMatch)
+    console.log(result)
+}
+
+// 3. return latitude & longitude (or maybe return entire object?)
+// 4. assign lat and long variables
+// 5. insert lat and long into locationResult URL
+
+
+
+
+   
 
 
         commentsList.innerHTML = ' '
@@ -69,5 +92,3 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     
-
-})
