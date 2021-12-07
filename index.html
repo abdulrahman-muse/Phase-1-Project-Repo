@@ -1,1 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Do I Need A Coat?</title>
+    <meta name="description" content="Weather app that looks out for you">
+    <meta name="author" content="Abdul, Defne, Chris">
+    <link
+      href="https://fonts.googleapis.com/css?family=Great+Vibes|Open+Sans:400,600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script defer type="text/javascript" src="index.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>Do I Need A Coat?</h1>
+      <nav class='search-bar'>search bar here</nav>
+    </header>
+
+    <main>
+        <!--weather-display-->
+      <div id="weather">
+        <h2 id="city-name"></h2>
+        <img id="weather-image" src="http://placehold.it/"/>
+        <h3 id="weather-report">Insert Weather Here</h3>
+        <p id="what-to-wear">Insert clothing recommendations here</p>
+        <!--comments-->
+        <h3 id="comments-header">What are people wearing in [city]:</h3>
+        <ul id="comments-list">
+          <li>Replace with actual comments</li>
+          <li>From the server</li>
+        </ul>        
+        <!--add-comments-->
+        <form id="new-comment">
+          <label for="new-comment" id="are-you-here">Are you in [this city]? Is it cold?</label>
+          <textarea id="comment-input"></textarea>
+          <button type="submit">Add comment</button>
+        </form>
+      </div>
+    </main>
+  </body>
+</html>
+
 
