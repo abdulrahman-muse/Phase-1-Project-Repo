@@ -93,12 +93,33 @@ function displayWeather(location, array) {
             weatherReport.textContent = item.description
             if (weatherReport.textContent.includes("snow")) {
               weatherImage.src = "https://www.collinsdictionary.com/images/full/snow_306991961.jpg"
-            }
+              }
+              if (weatherReport.textContent.includes("overcast")) {
+                weatherImage.src =
+                  "https://www.rochesterfirst.com/wp-content/uploads/sites/66/2021/04/sky-1107579_1920.jpg?w=1752&h=769&crop=1"
+              }
+              if (weatherReport.textContent.includes("")) {
+                weatherImage.src =
+                  "https://www.rochesterfirst.com/wp-content/uploads/sites/66/2021/04/sky-1107579_1920.jpg?w=1752&h=769&crop=1"
+                }
         }
     }
-}
+
 
 const weatherImage = document.querySelector("img#weather-image");
+
+function accordingToWeather(weather) {
+  if (weatherReport.textContent.includes("snow")) {
+    weatherImage.src = ""
+    whatToWear.innerText = "Make sure you grab your mittens!"
+    commentsList.innerHTML = ' '
+    let li = document.createElement('li')
+    li.innerText = "I just slipped on ice."
+    commentsList.appendChild(li)
+  }
+}
+
+
 const whatToWear = document.querySelector("p#what-to-wear");
 const commentsList = document.querySelector("ul#comments-list");
 const commentForm = document.querySelector("form#new-comment");
