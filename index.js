@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", function () {
 const cityName = document.querySelector("h2#city-name");
 const searchBar = document.querySelector("#searchbar");
 const searchButton = document.querySelector("#search-button");
-const weatherReport = document.querySelector("h3#weather-report");
 const commentsHeader = document.querySelector("h3#comments-header");
 const commentLabel = document.querySelector("#are-you-here");
 
@@ -87,15 +86,18 @@ const weatherTypes = [
 ]
 
 function displayWeather(location, array) {
+  let weatherReport = document.querySelector("h3#weather-report");
     let code = location.daily.weathercode[0];
     for (const item of array) {
         if (item.code === code) {
             weatherReport.textContent = item.description
+            if (weatherReport.textContent.includes("snow")) {
+              weatherImage.src = "https://www.collinsdictionary.com/images/full/snow_306991961.jpg"
+            }
         }
     }
 }
 
-const API = "https://open-meteo.com/en";
 const weatherImage = document.querySelector("img#weather-image");
 const whatToWear = document.querySelector("p#what-to-wear");
 const commentsList = document.querySelector("ul#comments-list");
