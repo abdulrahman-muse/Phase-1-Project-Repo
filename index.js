@@ -91,9 +91,7 @@ function displayWeather(location, array) {
     for (const item of array) {
         if (item.code === code) {
             weatherReport.textContent = item.description
-            if (weatherReport.textContent.includes("snow")) {
-              weatherImage.src = "https://www.collinsdictionary.com/images/full/snow_306991961.jpg"
-            }
+            accordingToWeather(weatherReport)
         }
     }
 }
@@ -101,6 +99,18 @@ function displayWeather(location, array) {
 const weatherImage = document.querySelector("img#weather-image");
 const whatToWear = document.querySelector("p#what-to-wear");
 const commentsList = document.querySelector("ul#comments-list");
+
+function accordingToWeather(report) {
+  if (report.textContent.includes("snow")) {
+    weatherImage.src = "https://www.collinsdictionary.com/images/full/snow_306991961.jpg"
+    whatToWear.innerText = "Make sure you grab your mittens!"
+    commentsList.innerHTML = ' '
+    let li = document.createElement('li')
+    li.innerText = "I just slipped on ice."
+    commentsList.appendChild(li)
+  }
+}
+
 const commentForm = document.querySelector("form#new-comment");
 const commentInput = document.querySelector("#comment-input");
 
