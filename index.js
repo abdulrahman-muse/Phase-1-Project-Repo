@@ -10,11 +10,11 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 const cityName = document.querySelector("h2#city-name");
-const lati = document.querySelector("p#latitude");
-const longi = document.querySelector("p#longitude");
 const searchBar = document.querySelector("#searchbar");
 const searchButton = document.querySelector("#search-button");
 const weatherReport = document.querySelector("h3#weather-report");
+const commentsHeader = document.querySelector("h3#comments-header");
+const commentLabel = document.querySelector("#are-you-here");
 
 function fetchCities() {
   return fetch("http://localhost:3000/locations").then((resp) => resp.json());
@@ -36,8 +36,8 @@ function getResults(list, string) {
           for (let x of listResult) {
             if (x.name.toLowerCase() === string.toLowerCase()) {
                 cityName.textContent = x.name;
-                lati.textContent = x.lat;
-                longi.textContent = x.lng;
+                commentsHeader.textContent = `What are people wearing in ${x.name}?`;
+                commentLabel.textContent = `Are you in ${x.name}? Is it cold?`
               return x
             }
           }
@@ -52,55 +52,55 @@ function fetchWeather(obj) {
     console.log(locationResult)
     fetch(locationResult)
     .then((resp) => resp.json())
-    .then((data) => displayWeather(data))
+    .then((data) => displayWeather(data, weatherTypes))
 }
 
-function displayWeather(location) {
-    console.log(location)
-    weatherReport.textContent = location.daily.weathercode[0];
+const weatherTypes = [
+    {code: 0, description: "Clear sky"},
+    {code: 1, description: "Mainly clear"},
+    {code: 2, description: "Partly cloudy"},
+    {code: 3, description: "Overcast"},
+    {code: 45, description: "Fog"},
+    {code: 48, description: "Depositing rime fog"},
+    {code: 51, description: "Light drizzle"},
+    {code: 53, description: "Moderate drizzle"},
+    {code: 55, description: "Dense drizzle"},
+    {code: 56, description: "Light freezing drizzle"},
+    {code: 57, description: "Dense freezing drizzle"},
+    {code: 61, description: "Slight rain"},
+    {code: 63, description: "Moderate rain"},
+    {code: 65, description: "Heavy rain"},
+    {code: 66, description: "Light freezing rain"},
+    {code: 67, description: "Heavy freezing rain"},
+    {code: 71, description: "Slight snow fall"},
+    {code: 73, description: "Moderate snow fall"},
+    {code: 75, description: "Heavy snow fall"},
+    {code: 77, description: "Snow grains"},
+    {code: 80, description: "Slight rain showers"},
+    {code: 81, description: "Moderate rain showers"},
+    {code: 82, description: "Violent rain showers"},
+    {code: 85, description: "Slight snow showers"},
+    {code: 86, description: "Heavy snow showers"},
+    {code: 95, description: "Thunderstorm"},
+    {code: 96, description: "Thunderstorm with slight hail"},
+    {code: 99, description: "Thunderstorm with heavy hail"},
+]
+
+function displayWeather(location, array) {
+    let code = location.daily.weathercode[0];
+    for (const item of array) {
+        if (item.code === code) {
+            weatherReport.textContent = item.description
+        }
+    }
 }
-
-//   .forEach((location) => {
-//     const locationResult = `https://api.open-meteo.com/v1/forecast?latitude=${location.lat}&longitude=${location.lng}&daily=weathercode&current_weather=true&timezone=America%2FNew_York`;
-//     fetch(locationResult)
-//       .then((resp) => resp.json())
-//       .then((data) => displayWeather(data));
-//   });
-// }
-
-
-
-
 
 const API = "https://open-meteo.com/en";
 const weatherImage = document.querySelector("img#weather-image");
 const whatToWear = document.querySelector("p#what-to-wear");
-const commentsHeader = document.querySelector("h3#comments-header");
 const commentsList = document.querySelector("ul#comments-list");
 const commentForm = document.querySelector("form#new-comment");
-const commentLabel = document.querySelector("#are-you-here");
 const commentInput = document.querySelector("#comment-input");
-
-// 1. receive the name of the city
-function isMatch(element) {
-  return element.name === searchBar.value;
-}
-// 2. search through cities.json to locate matching city
-function matchSearch() {
-  let result = cities.find(isMatch);
-  console.log(result);
-}
-
-// 3. return latitude & longitude (or maybe return entire object?)
-// 4. assign lat and long variables
-// 5. insert lat and long into locationResult URL
-
-commentsList.innerHTML = " ";
-data.comments.forEach((comment) => {
-  const li = document.createElement("li");
-  li.innerText = comment.content;
-  commentsList.appendChild(li);
-});
 
 commentForm.addEventListener("submit", addComment);
 
