@@ -11,7 +11,7 @@ body {
   }
   
   h1 {
-    font-family: "Marker Felt";
+    font-family: "Archivo Narrow";
     font-size: 52px;
     color: #3434d5;
     margin: auto;
@@ -36,14 +36,11 @@ body {
     width: 60%;
   }
 
-  .search button[type=submit] {
+  .search button[type=button] {
     font-size: 12px;
     width: 10%;
   }
-  
-  .beer-details h3 {
-    font-size: 24px;
-  }
+
   
   img {
     display: block;
@@ -67,7 +64,7 @@ body {
     margin-bottom: 10px;
   }
   
-  form button[type="submit"] {
+  form button[type="button"] {
     border: none;
     font-size: 16px;
     font-weight: 600;
