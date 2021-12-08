@@ -94,14 +94,14 @@ function displayWeather(location, array) {
             if (weatherReport.textContent.includes("snow")) {
               weatherImage.src = "https://www.collinsdictionary.com/images/full/snow_306991961.jpg"
               }
-              if (weatherReport.textContent.includes("overcast")) {
+              if (weatherReport.textContent.includes("Overcast")) {
                 weatherImage.src =
                   "https://www.rochesterfirst.com/wp-content/uploads/sites/66/2021/04/sky-1107579_1920.jpg?w=1752&h=769&crop=1"
               }
-              if (weatherReport.textContent.includes("")) {
+              if (weatherReport.textContent.includes("Overcast")) {
                 weatherImage.src =
                   "https://www.rochesterfirst.com/wp-content/uploads/sites/66/2021/04/sky-1107579_1920.jpg?w=1752&h=769&crop=1"
-                }
+              }
         }
     }
 
@@ -133,4 +133,4 @@ function addComment(e) {
   li.textContent = commentInput.value;
   commentsList.appendChild(li);
   e.target.reset();
-}
+}}
