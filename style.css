@@ -1,84 +1,208 @@
 body {
-    margin: auto;
-    font-family: "Open Sans", sans-serif;
-    font-size: 14px;
-    color: #404040;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 125vh;
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  background: #222;
+  background-image: url("https://i.pinimg.com/originals/b8/27/17/b8271718bf816c3e27709298e9233f70.jpg");
   
-  header {
-    margin: auto;
-    width: 50%;
-  }
-  
-  h1 {
-    font-family: "Archivo Narrow";
-    font-size: 52px;
-    color: #3434d5;
-    margin: auto;
-    text-align: center;
-  }
-  
-  main {
-    margin: auto;
-    width: 50%;
-    border: 3px solid green;
-    padding: 10px;
-  }
-  
-  .search {
-    font-size: 12px;
-    margin: auto;
-    width: 100%;
-  }
+}
 
-  .search input[type=text] {
-    font-size: 12px;
-    width: 60%;
-  }
+main {
+  background: #000000d0;
+  color: white;
+  padding: 2.5em;
+  border-radius: 5%;
+  width: 50%;
+  max-width: 500px;
+  
+}
 
-  .search button[type=button] {
-    font-size: 12px;
-    width: 10%;
-  }
-
-  
-  img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
-  }
-  
-  form {
-    width: 300px;
-    margin: auto;
-  }
-  
-  textarea {
-    display: block;
-    width: 100%;
-    height: 100px;
-    border: 1px solid gray;
-    padding: 5px;
-    font-size: 14px;
-    margin-bottom: 10px;
-  }
-  
-  form button[type="button"] {
+#search-button.search {
+    border-radius: 75%;
     border: none;
-    font-size: 16px;
-    font-weight: 600;
-    text-transform: uppercase;
-    background-color: #f1a458;
-    color: #fff;
-    padding: 7px 10px;
+    background: #7c7c7c2b;
+    color: white;
+    height: 2.5em;
+    width: 2.5em;
     cursor: pointer;
-  }
+    transition: 0.2s ease-in-out;
+}
+
+#search-button.search:hover {
+  background: #7c7c7c6b;
+}
+
+#searchbar.search {
+  border: none;
+  width: 50%;
+  outline: none;
+  color: white;
+  padding: 0.5em;
+  border-radius: 18px;
+  background: #7c7c7c2b;
+}
+
+#comment-btn {
   
-  #comment-list li {
-    background-color: #fff3a9;
-    border-radius: 5px;
-    padding: 20px;
-    margin-bottom: 20px;
-  }
-  
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+#city-name {
+  text-align: center;
+}
+
+.search {
+  text-align: center;
+}
+
+#searchbar.search {
+  text-align: left;
+} 
+
+#new-comment {
+  text-align: center;
+}
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+#title {
+  text-align: center;
+}
+
+/* body {
+  margin: auto;
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+  color: #404040;
+}
+
+header {
+  margin: auto;
+  width: 50%;
+}
+
+h1 {
+  font-family: "Archivo Narrow";
+  font-size: 52px;
+  /* color: #3434d5; */
+  /* margin: auto;
+  text-align: center;
+}
+
+main {
+  margin: auto;
+  width: 50%;
+  border: 5px solid green;
+  padding: 10px;
+}
+
+.search {
+  font-size: 12px;
+  margin: auto;
+  width: 100%;
+}
+
+.search input[type=text] {
+  font-size: 12px;
+  width: 60%;
+}
+
+.search button[type=button] {
+  font-size: 12px;
+  width: 10%;
+}
+
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+form {
+  width: 300px;
+  margin: auto;
+}
+
+textarea {
+  display: block;
+  width: 100%;
+  height: 100px;
+  border: 1px solid gray;
+  padding: 5px;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+form button[type="button"] {
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  background-color: #f1a458;
+  color: #fff;
+  padding: 7px 10px;
+  cursor: pointer;
+}
+
+#comment-list li {
+  background-color: #fff3a9;
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 20px;
+} */
+
+/* 
+#city-name {
+  text-align: center;
+}
+
+.search {
+  text-align: center;
+}
+
+#searchbar.search {
+  text-align: left;
+} 
+
+#new-comment {
+  text-align: center;
+}
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+} */
+
+/* #comment-input {
+  border: none;
+  outline: none;
+  padding: 0.5em;
+  border-radius: 18px;
+  background: #7c7c7c2b;
+}
+
+#comment-btn {
+  border-radius: 15%;
+    border: none;
+    background: #7c7c7c2b;
+    height: 2.5em;
+    width: 7.5em;
+} */
+
+/* 
+#title {
+  text-align: center;
+} */
