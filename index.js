@@ -10,37 +10,51 @@ document.addEventListener('DOMContentLoaded', function(){
 
 const cities = "http://localhost:3000/locations"
 const cityName = document.querySelector('h2#city-name')
+const lati = document.querySelector('p#latitude')
+const longi = document.querySelector('p#longitude')
 const searchBar = document.querySelector('#searchbar')
 const searchButton = document.querySelector('#search-button')
+const weatherReport = document.querySelector('h3#weather-report')
+const locationResult = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&daily=weathercode&current_weather=true&timezone=America%2FNew_York`
 
 function fetchCities(){
     fetch (cities)
     .then(resp => resp.json())
-    .then(console.log('hi!'));
+    .then(data => displayLocations(data));
     }
 
-searchButton.addEventListener('click', (e) => {
+function displayLocations(locations) {
+    locations.forEach((location) => {
+        cityName.textContent = location.name
+        lati.textContent = location.lat
+        longi.textContent = location.lng
+    })
+}
+
+searchButton.addEventListener('click', searchFun)
+
+function searchFun() {
     let search = searchBar.value
-    if (search.length > 0) {
+    if (search.length > 1) {
+        console.log('hi!')
         getResults(cities, search)
                 }
-            })
-
-function getResults(array, string) {
-    if(typeof string === 'string') {
-        let lowerString = string.toLowerCase()
-        for (let x of array) {
-            if (x.name.toLowerCase().find(lowerString)) {
-                console.log(x)
             }
-        }    
+    
+function getResults(list, string) {
+    if(typeof string === 'string') {
+        for (let x of list) {
+            if (x.name === string) {
+                console.log(x.name)
+            }
+        }
     }
         }
 
+
+
     const API = "https://open-meteo.com/en"
-    const locationResult = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&daily=weathercode&current_weather=true&timezone=America%2FNew_York`
     const weatherImage = document.querySelector('img#weather-image')
-    const weatherReport = document.querySelector('h3#weather-report')
     const whatToWear = document.querySelector('p#what-to-wear')
     const commentsHeader = document.querySelector('h3#comments-header')
     const commentsList = document.querySelector('ul#comments-list')

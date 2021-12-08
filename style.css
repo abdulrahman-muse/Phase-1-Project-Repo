@@ -36,7 +36,7 @@ body {
     width: 60%;
   }
 
-  .search button[type=submit] {
+  .search button[type=button] {
     font-size: 12px;
     width: 10%;
   }
