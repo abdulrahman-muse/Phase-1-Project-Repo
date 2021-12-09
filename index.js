@@ -98,13 +98,21 @@ function displayWeather(location, array) {
                 weatherImage.src =
                   "https://www.rochesterfirst.com/wp-content/uploads/sites/66/2021/04/sky-1107579_1920.jpg?w=1752&h=769&crop=1";
               }
-              if (weatherReport.textContent.includes("Slight rain")) {
+              if (
+                weatherReport.textContent.includes(
+                  "Slight rain" || "Slight rain showers"
+                )
+              ) {
                 weatherImage.src =
                   "https://www.denverpost.com/wp-content/uploads/2016/05/20160509__CD16WEATHER_AC25750xp1.jpg?w=654";
               }
               if (weatherReport.textContent.includes("Thunderstorm")) {
                 weatherImage.src =
                   "https://www.mercurynews.com/wp-content/uploads/2020/08/SJM-L-LIGHTNING-0817-11.jpg?w=810";
+              }
+              if (weatherReport.textContent.includes("Fog")) {
+                weatherImage.src =
+                  "https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F603afd08b3400e3d1a7ba156%2FFog-Trucks%2F960x0.jpg%3Ffit%3Dscale";
               }
         }
         }
