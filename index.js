@@ -130,9 +130,7 @@ const commentsList = document.querySelector("ul#comments-list");
 
 
 
-// function accordingToWeather(weather) {
-//   if (weatherReport.textContent.includes("snow")) {
-//     weatherImage.src = ""
+
 
 function accordingToWeather(report) {
   if (report.textContent.includes("Snow")) {
