@@ -7,8 +7,9 @@ body {
   font-family: 'Open Sans', sans-serif;
   background: #222;
   background-image: url("https://i.pinimg.com/originals/b8/27/17/b8271718bf816c3e27709298e9233f70.jpg");
+ }
   
-  header {
+  /* header {
     margin: auto;
     width: 50%;
   }
@@ -69,7 +70,7 @@ body {
   
   form button[type="button"] {
 
-}
+} */
 
 main {
   background: #000000d0;
@@ -139,6 +140,10 @@ img {
 #title {
   text-align: center;
 }
+
+/* #weather-report {
+  text-align: center;
+} */
 
 /* body {
   margin: auto;
