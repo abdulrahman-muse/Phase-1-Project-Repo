@@ -55,6 +55,35 @@ function fetchWeather(obj) {
 }
 
 const weatherTypes = [
+
+    {code: 0, description: "Clear sky"},
+    {code: 1, description: "Mainly clear"},
+    {code: 2, description: "Partly cloudy"},
+    {code: 3, description: "Overcast"},
+    {code: 45, description: "Fog"},
+    {code: 48, description: "Depositing rime fog"},
+    {code: 51, description: "Light drizzle"},
+    {code: 53, description: "Moderate drizzle"},
+    {code: 55, description: "Dense drizzle"},
+    {code: 56, description: "Light freezing drizzle"},
+    {code: 57, description: "Dense freezing drizzle"},
+    {code: 61, description: "Slight rain"},
+    {code: 63, description: "Moderate rain"},
+    {code: 65, description: "Heavy rain"},
+    {code: 66, description: "Light freezing rain"},
+    {code: 67, description: "Heavy freezing rain"},
+    {code: 71, description: "Slight snow fall"},
+    {code: 73, description: "Moderate snow fall"},
+    {code: 75, description: "Heavy snow fall"},
+    {code: 77, description: "Snow grains"},
+    {code: 80, description: "Slight rain showers"},
+    {code: 81, description: "Moderate rain showers"},
+    {code: 82, description: "Violent rain showers"},
+    {code: 85, description: "Slight snow showers"},
+    {code: 86, description: "Heavy snow showers"},
+    {code: 95, description: "Thunderstorm"},
+    {code: 96, description: "Thunderstorm with slight hail"},
+    {code: 99, description: "Thunderstorm with heavy hail"},
     {code: 0, description: "Clear Sky"},
     {code: 1, description: "Mainly Clear"},
     {code: 2, description: "Partly Cloudy"},
@@ -91,7 +120,34 @@ function displayWeather(location, array) {
     for (const item of array) {
         if (item.code === code) {
             weatherReport.textContent = item.description
+
+            if (weatherReport.textContent.includes("snow")) {
+              weatherImage.src = "https://www.collinsdictionary.com/images/full/snow_306991961.jpg";
+              }
+              if (weatherReport.textContent.includes("Overcast")) {
+                weatherImage.src =
+                  "https://www.rochesterfirst.com/wp-content/uploads/sites/66/2021/04/sky-1107579_1920.jpg?w=1752&h=769&crop=1";
+              }
+              if (
+                weatherReport.textContent.includes(
+                  "Slight rain" || "Slight rain showers"
+                )
+              ) {
+                weatherImage.src =
+                  "https://www.denverpost.com/wp-content/uploads/2016/05/20160509__CD16WEATHER_AC25750xp1.jpg?w=654";
+              }
+              if (weatherReport.textContent.includes("Thunderstorm")) {
+                weatherImage.src =
+                  "https://www.mercurynews.com/wp-content/uploads/2020/08/SJM-L-LIGHTNING-0817-11.jpg?w=810";
+              }
+              if (weatherReport.textContent.includes("Fog")) {
+                weatherImage.src =
+                  "https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F603afd08b3400e3d1a7ba156%2FFog-Trucks%2F960x0.jpg%3Ffit%3Dscale";
+              }
+        }
+
             accordingToWeather(weatherReport)
+
         }
     }
 }
@@ -100,9 +156,17 @@ const weatherImage = document.querySelector("img#weather-image");
 const whatToWear = document.querySelector("p#what-to-wear");
 const commentsList = document.querySelector("ul#comments-list");
 
+
+const weatherImage = document.querySelector("img#weather-image");
+
+function accordingToWeather(weather) {
+  if (weatherReport.textContent.includes("snow")) {
+    weatherImage.src = ""
+
 function accordingToWeather(report) {
   if (report.textContent.includes("snow")) {
     weatherImage.src = "https://www.collinsdictionary.com/images/full/snow_306991961.jpg"
+
     whatToWear.innerText = "Make sure you grab your mittens!"
     commentsList.innerHTML = ' '
     let li = document.createElement('li')
@@ -110,6 +174,10 @@ function accordingToWeather(report) {
     commentsList.appendChild(li)
   }
 }
+
+
+const whatToWear = document.querySelector("p#what-to-wear");
+const commentsList = document.querySelector("ul#comments-list");
 
 const commentForm = document.querySelector("form#new-comment");
 const commentInput = document.querySelector("#comment-input");
@@ -122,4 +190,8 @@ function addComment(e) {
   li.textContent = commentInput.value;
   commentsList.appendChild(li);
   e.target.reset();
+
 }
+
+}
+
