@@ -115,6 +115,15 @@ function displayWeather(location, array) {
                 weatherImage.src =
                   "https://lh3.googleusercontent.com/CnHg3skxcIhFKh5oE_ZV61x-a-tqWKIWC04a4hWkmQymuBRGlp3Kgnr_d3bEj-jgvPZAM1kh4nkpALUr0bDaUJdzPQ=w640-h400-e365-rj-sc0x00ffffff";
               }
+              if (
+                weatherReport.textContent.includes(
+                  "Moderate Rain" || "Heavy Rain"
+                )
+              ) {
+                weatherImage.src =
+                  "https://i.guim.co.uk/img/media/8132db117e863456488b553125383608d8c13264/0_265_2366_1419/master/2366.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=a646aa6afdee6cbea9460b4a660743ab";
+              }
+              
         }
 
             accordingToWeather(weatherReport)
@@ -140,11 +149,11 @@ function accordingToWeather(report) {
   } else if (report.textContent.includes("Rain" || "Drizzle" || "Thunderstorm")) {
     whatToWear.innerText = "Clothing Recommendation : Make sure you grab rain coat!"
   } else if (report.textContent.includes("Clear")) {
-    whatToWear.innerText = ""
+    whatToWear.innerText = "Clothing Recommendation: Wear your coolest shades"
   } else if (report.textContent.includes("Fog")) {
-    whatToWear.innerText = ""
+    whatToWear.innerText = "Recommendaion: If you plan on driving, go slow!"
   } else if (report.textContent.includes("Overcast" || "Cloudy")) {
-    whatToWear.innerText = ""
+    whatToWear.innerText = "No sun right now, check back later"
   } 
 }
 
