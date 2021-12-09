@@ -92,16 +92,21 @@ function displayWeather(location, array) {
         if (item.code === code) {
             weatherReport.textContent = item.description
             if (weatherReport.textContent.includes("snow")) {
-              weatherImage.src = "https://www.collinsdictionary.com/images/full/snow_306991961.jpg"
+              weatherImage.src = "https://www.collinsdictionary.com/images/full/snow_306991961.jpg";
               }
               if (weatherReport.textContent.includes("Overcast")) {
                 weatherImage.src =
-                  "https://www.rochesterfirst.com/wp-content/uploads/sites/66/2021/04/sky-1107579_1920.jpg?w=1752&h=769&crop=1"
+                  "https://www.rochesterfirst.com/wp-content/uploads/sites/66/2021/04/sky-1107579_1920.jpg?w=1752&h=769&crop=1";
               }
-              if (weatherReport.textContent.includes("Overcast")) {
+              if (weatherReport.textContent.includes("Slight rain")) {
                 weatherImage.src =
-                  "https://www.rochesterfirst.com/wp-content/uploads/sites/66/2021/04/sky-1107579_1920.jpg?w=1752&h=769&crop=1"
+                  "https://www.denverpost.com/wp-content/uploads/2016/05/20160509__CD16WEATHER_AC25750xp1.jpg?w=654";
               }
+              if (weatherReport.textContent.includes("Thunderstorm")) {
+                weatherImage.src =
+                  "https://www.mercurynews.com/wp-content/uploads/2020/08/SJM-L-LIGHTNING-0817-11.jpg?w=810";
+              }
+        }
         }
     }
 
@@ -133,4 +138,4 @@ function addComment(e) {
   li.textContent = commentInput.value;
   commentsList.appendChild(li);
   e.target.reset();
-}}
+}
