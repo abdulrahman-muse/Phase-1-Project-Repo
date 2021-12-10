@@ -17,7 +17,12 @@ const commentLabel = document.querySelector("#are-you-here");
 
 function fetchCities() {
   return fetch("http://localhost:3000/locations").then((resp) => resp.json());
-}
+} 
+
+const tempData = document.querySelector("#temperature")
+const windData = document.querySelector("#windspeed")
+
+
 
 function searchFun() {
   let search = searchBar.value;
@@ -30,6 +35,7 @@ searchButton.addEventListener("click", searchFun);
 
 function getResults(list, string) {
     list = fetch("http://localhost:3000/locations").then((resp) => resp.json())
+
     list.then((listResult) => {
         if (typeof string === "string") {
           for (let x of listResult) {
@@ -46,13 +52,18 @@ function getResults(list, string) {
     })
 }
 
+
 function fetchWeather(obj) {
-    const locationResult = `https://api.open-meteo.com/v1/forecast?latitude=${obj.lat}&longitude=${obj.lng}&daily=weathercode&current_weather=true&timezone=America%2FNew_York`;
+    const locationResult = `https://api.open-meteo.com/v1/forecast?latitude=${obj.lat}&longitude=${obj.lng}&daily=weathercode,temperature_2m_max,temperature_2m_min,windspeed_10m_max&current_weather=true&temperature_unit=fahrenheit&windspeed_unit=mph&timezone=America%2FNew_York`;
     console.log(locationResult)
     fetch(locationResult)
     .then((resp) => resp.json())
-    .then((data) => displayWeather(data, weatherTypes))
-}
+    .then((data) => {
+      tempData.textContent = `Temperature : ${data.current_weather.temperature} °F`
+      windData.textContent = `Windspeed : ${data.current_weather.windspeed} mp\h`
+      displayWeather(data, weatherTypes)})
+    
+
 
 const weatherTypes = [
 {code: 0, description: "Clear Sky"},
@@ -115,6 +126,10 @@ function displayWeather(location, array) {
                 weatherImage.src =
                   "https://lh3.googleusercontent.com/CnHg3skxcIhFKh5oE_ZV61x-a-tqWKIWC04a4hWkmQymuBRGlp3Kgnr_d3bEj-jgvPZAM1kh4nkpALUr0bDaUJdzPQ=w640-h400-e365-rj-sc0x00ffffff";
               }
+              if (weatherReport.textContent.includes("Moderate Rain" || "Heavy Rain")) {
+                weatherImage.src =
+                  "https://i.guim.co.uk/img/media/8132db117e863456488b553125383608d8c13264/0_265_2366_1419/master/2366.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=a646aa6afdee6cbea9460b4a660743ab";
+              }
         }
 
             accordingToWeather(weatherReport)
@@ -138,11 +153,11 @@ function accordingToWeather(report) {
   } else if (report.textContent.includes("Rain" || "Drizzle" || "Thunderstorm")) {
     whatToWear.innerText = "Clothing Recommendation : Make sure you grab rain coat!"
   } else if (report.textContent.includes("Clear")) {
-    whatToWear.innerText = ""
+    whatToWear.innerText = "Clothing Recommendation: Wear your coolest shades"
   } else if (report.textContent.includes("Fog")) {
-    whatToWear.innerText = ""
+    whatToWear.innerText = "Recommendaion: If you plan on driving, go slow!"
   } else if (report.textContent.includes("Overcast" || "Cloudy")) {
-    whatToWear.innerText = ""
+    whatToWear.innerText = "No sun right now, check back later"
   } 
 }
 
@@ -162,6 +177,4 @@ function addComment(e) {
   commentsList.appendChild(li);
   e.target.reset();
 
-}
-
-  
+}}

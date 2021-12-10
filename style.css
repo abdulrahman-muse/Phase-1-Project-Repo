@@ -77,3 +77,23 @@ img {
 #title {
   text-align: center;
 }
+
+#weather-report {
+  text-align: center;
+}
+
+#temperature {
+  text-align: center;
+}
+
+#windspeed {
+  text-align: center;
+}
+
+#comments-header {
+  text-align: center;
+}
+
+#what-to-wear {
+  text-align: center;
+}
